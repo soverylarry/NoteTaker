@@ -2,35 +2,35 @@
 const express = require("express");
 const app = express(); //start an express app
 const path = require("path"); // relate paths windows or mac
-//const bodyParser = require("body-parser");
+
 const fs = require("fs");
 const PORT = process.env.PORT || 8000;
-//const router = express.Router(); //always needs further configuration
+
 
 // app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "/Develop/public")));
-//app.use(bodyParser);
 
+//create use dBase database for notes/storage/retreival
 let dBase = fs.readFileSync("./Develop/db/db.json","utf-8");
 console.log("database:", dBase)
 dBase ? dBase = JSON.parse(dBase) : dBase = [];
 
-
+//points to index.html
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "/Develop/public/index.html"));
     
       console.log("index:", __dirname);
   });
-
+//points to notes.htm.
 app.get("/notes", (req, res) => {
     res.sendFile(path.join(__dirname, "/Develop/public/notes.html"));
     
       console.log("index:", __dirname);
   });
 
-// set API Routes
+// create api/notes  reference dBase
 app.get('/api/notes', (req, res) => {
   return res.send(dBase);
 })
@@ -50,6 +50,7 @@ app.post("/api/notes", (req, res) => {
   console.log("post data:", dBase)
 });
 
+//delete capability for notes and notify if note not found
 app.delete("/api/notes/:id", (req,res) => {
   const noteId = dBase.find(note => note.id === parseInt(req.params.id));
   const index = dBase.indexOf(noteId);
@@ -61,11 +62,11 @@ app.delete("/api/notes/:id", (req,res) => {
   return res.json(true);
 });
 
-//My '404' response if indes page not found
+//My '404' response if index page not found
 app.get("*", (req, res) => {
     res.json ("Page not found, SAVE FERRIS");
 });
-
+//create PORT on server
 app.listen(PORT, () => {
     console.log ("app is working at port:", PORT);
 });
