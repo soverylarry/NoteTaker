@@ -37,5 +37,6 @@ HTML app that leverages Express Backend from JSON files, to create, save and del
 
 
 ## Images of App in use...
-<img src="Develop\public\assets\images\NoteTaker1.png>
-<img src="Develop\public\assets\images\NoteTaker2.png>
+<img src="Develop\public\assets\images\NoteTaker1.png">
+<img src="Develop\public\assets\images\NoteTaker2.png">
+
