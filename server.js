@@ -55,7 +55,7 @@ app.delete("/api/notes/:id", (req,res) => {
   const noteId = dBase.find(note => note.id === parseInt(req.params.id));
   const index = dBase.indexOf(noteId);
   if(!noteId) 
-  return res.status(404).send("Note not available!");
+  return res.status(404).send("D'oh! No Note for YOU!");
   
   dBase.splice(index,1);
   fs.writeFileSync("./Develop/db/db.json", JSON.stringify(dBase), "utf-8");
