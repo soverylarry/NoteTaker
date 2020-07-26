@@ -34,6 +34,10 @@ HTML app that leverages Express Backend from JSON files, to create, save and del
 ## Project Links
   GitHub Repo: [GitHub] https://github.com/soverylarry/NoteTaker/
   
+  Depolyed on Heroku: https://larrys-note-taker.herokuapp.com/
 
 
 ## Images of App in use...
+<img src="Develop\public\assets\images\NoteTaker1.png">
+<img src="Develop\public\assets\images\NoteTaker2.png">
+
